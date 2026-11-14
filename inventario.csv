@@ -1,55 +1,55 @@
-nombre,precio,cantidad
-Perfume Oud Royal 100ml,185000,12
-Perfume Jazmín Noche 50ml,95000,0
-Colonia Cítrica Verano 150ml,68000,25
-Perfume Ámbar Dorado 75ml,140000,4
-Perfume Rosa Salvaje 50ml,98000,10
-Perfume Vainilla Suave 100ml,120000,8
-Colonia Brisa Marina 150ml,72000,20
-Perfume Sándalo Místico 75ml,155000,5
-Perfume Lavanda Serena 50ml,85000,14
-Perfume Cuero Noble 100ml,210000,3
-Colonia Menta Fresca 200ml,65000,30
-Perfume Orquídea Negra 75ml,175000,0
-Perfume Flor de Azahar 50ml,92000,11
-Perfume Pimienta Rosa 100ml,165000,6
-Colonia Limón y Albahaca 150ml,70000,18
-Perfume Almizcle Blanco 50ml,88000,9
-Perfume Cedro Imperial 100ml,190000,4
-Perfume Peonía Delicada 75ml,130000,7
-Colonia Bergamota Clara 100ml,62000,22
-Perfume Incienso Sagrado 50ml,145000,2
-Perfume Coco y Vainilla 100ml,110000,15
-Perfume Té Verde 75ml,99000,0
-Colonia Mandarina Alegre 150ml,66000,25
-Perfume Pachulí Intenso 100ml,160000,5
-Perfume Gardenia Blanca 50ml,105000,8
-Perfume Ámbar Oscuro 100ml,198000,3
-Colonia Pepino Fresco 200ml,58000,28
-Perfume Cereza Dulce 50ml,89000,12
-Perfume Vetiver Elegante 100ml,172000,6
-Perfume Magnolia Suave 75ml,125000,9
-Colonia Agua de Mar 150ml,69000,0
-Perfume Canela Especiada 50ml,94000,10
-Perfume Tabaco y Miel 100ml,205000,4
-Perfume Lirio del Valle 75ml,118000,7
-Colonia Pomelo Rosado 100ml,64000,19
-Perfume Mirra Antigua 50ml,150000,3
-Perfume Frambuesa Silvestre 100ml,108000,13
-Perfume Iris Polvoroso 75ml,168000,5
-Colonia Hierbabuena 150ml,61000,24
-Perfume Café Tostado 100ml,135000,0
-Perfume Nardo Nocturno 50ml,142000,4
-Perfume Higo Mediterráneo 100ml,148000,8
-Colonia Naranja Dulce 200ml,63000,27
-Perfume Musgo de Roble 75ml,158000,6
-Perfume Violeta Tierna 50ml,87000,11
-Perfume Cardamomo Real 100ml,182000,3
-Colonia Lima Verde 150ml,67000,21
-Perfume Tuberosa Radiante 75ml,170000,5
-Perfume Pera y Fresia 50ml,93000,14
-Perfume Oud Ahumado 100ml,235000,2
-Colonia Romero y Salvia 100ml,71000,16
-Perfume Caramelo Salado 75ml,115000,0
-Perfume Jengibre Vivo 50ml,96000,10
-Perfume Noche de Seda 100ml,188000,7
+nombre,precio,cantidad,imagen
+Perfume Oud Royal 100ml,185000,12,20260725_145402.jpg
+Perfume Jazmín Noche 50ml,95000,0,20260725_150606.jpg
+Colonia Cítrica Verano 150ml,68000,25,20260725_150711.jpg
+Perfume Ámbar Dorado 75ml,140000,4,20260823_124530.jpg
+Perfume Rosa Salvaje 50ml,98000,10,20260823_130631.jpg
+Perfume Vainilla Suave 100ml,120000,8,20260829_124927.jpg
+Colonia Brisa Marina 150ml,72000,20,20260829_125344.jpg
+Perfume Sándalo Místico 75ml,155000,5,20260829_125407.jpg
+Perfume Lavanda Serena 50ml,85000,14,20260829_125724.jpg
+Perfume Cuero Noble 100ml,210000,3,20260829_130126.jpg
+Colonia Menta Fresca 200ml,65000,30,20260829_130418.jpg
+Perfume Orquídea Negra 75ml,175000,0,20260905_175457.jpg
+Perfume Flor de Azahar 50ml,92000,11,20260905_175548.jpg
+Perfume Pimienta Rosa 100ml,165000,6,20260914_091230.jpg
+Colonia Limón y Albahaca 150ml,70000,18,20260924_195551.jpg
+Perfume Almizcle Blanco 50ml,88000,9,20260725_145402.jpg
+Perfume Cedro Imperial 100ml,190000,4,20260725_150606.jpg
+Perfume Peonía Delicada 75ml,130000,7,20260725_150711.jpg
+Colonia Bergamota Clara 100ml,62000,22,20260823_124530.jpg
+Perfume Incienso Sagrado 50ml,145000,2,20260823_130631.jpg
+Perfume Coco y Vainilla 100ml,110000,15,20260829_124927.jpg
+Perfume Té Verde 75ml,99000,0,20260829_125344.jpg
+Colonia Mandarina Alegre 150ml,66000,25,20260829_125407.jpg
+Perfume Pachulí Intenso 100ml,160000,5,20260829_125724.jpg
+Perfume Gardenia Blanca 50ml,105000,8,20260829_130126.jpg
+Perfume Ámbar Oscuro 100ml,198000,3,20260829_130418.jpg
+Colonia Pepino Fresco 200ml,58000,28,20260905_175457.jpg
+Perfume Cereza Dulce 50ml,89000,12,20260905_175548.jpg
+Perfume Vetiver Elegante 100ml,172000,6,20260914_091230.jpg
+Perfume Magnolia Suave 75ml,125000,9,20260924_195551.jpg
+Colonia Agua de Mar 150ml,69000,0,20260725_145402.jpg
+Perfume Canela Especiada 50ml,94000,10,20260725_150606.jpg
+Perfume Tabaco y Miel 100ml,205000,4,20260725_150711.jpg
+Perfume Lirio del Valle 75ml,118000,7,20260823_124530.jpg
+Colonia Pomelo Rosado 100ml,64000,19,20260823_130631.jpg
+Perfume Mirra Antigua 50ml,150000,3,20260829_124927.jpg
+Perfume Frambuesa Silvestre 100ml,108000,13,20260829_125344.jpg
+Perfume Iris Polvoroso 75ml,168000,5,20260829_125407.jpg
+Colonia Hierbabuena 150ml,61000,24,20260829_125724.jpg
+Perfume Café Tostado 100ml,135000,0,20260829_130126.jpg
+Perfume Nardo Nocturno 50ml,142000,4,20260829_130418.jpg
+Perfume Higo Mediterráneo 100ml,148000,8,20260905_175457.jpg
+Colonia Naranja Dulce 200ml,63000,27,20260905_175548.jpg
+Perfume Musgo de Roble 75ml,158000,6,20260914_091230.jpg
+Perfume Violeta Tierna 50ml,87000,11,20260924_195551.jpg
+Perfume Cardamomo Real 100ml,182000,3,20260725_145402.jpg
+Colonia Lima Verde 150ml,67000,21,20260725_150606.jpg
+Perfume Tuberosa Radiante 75ml,170000,5,20260725_150711.jpg
+Perfume Pera y Fresia 50ml,93000,14,20260823_124530.jpg
+Perfume Oud Ahumado 100ml,235000,2,20260823_130631.jpg
+Colonia Romero y Salvia 100ml,71000,16,20260829_124927.jpg
+Perfume Caramelo Salado 75ml,115000,0,20260829_125344.jpg
+Perfume Jengibre Vivo 50ml,96000,10,20260829_125407.jpg
+Perfume Noche de Seda 100ml,188000,7,20260829_125724.jpg

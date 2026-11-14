@@ -4,6 +4,8 @@ const CONFIG = {
   locale: "es-CO",
   // Archivo de inventario CSV (debe estar en la misma carpeta que index.html)
   inventoryFile: "inventario.csv",
+  // Carpeta donde están las fotos de los productos (columna "imagen" del CSV)
+  imagesFolder: "imgs/",
   // Dirección del formulario en Formspree (ver README). Ejemplo: "https://formspree.io/f/abcd1234"
   formEndpoint: "https://formspree.io/f/TU_ID_AQUI",
   // Opcional: número de WhatsApp con código de país, sin + ni espacios. Ejemplo: "573001234567"
@@ -103,7 +105,8 @@ async function loadInventory() {
       return;
     }
 
-    items.push({ id: index + 1, name, price, quantity });
+    const image = String(row.imagen ?? "").trim();
+    items.push({ id: index + 1, name, price, quantity, image });
   });
 
   return items;
@@ -113,6 +116,14 @@ async function loadInventory() {
 function getFilteredProducts() {
   const term = searchInput.value.trim().toLowerCase();
   return products.filter(p => !term || p.name.toLowerCase().includes(term));
+}
+
+/* ===== Imágenes ===== */
+/* Devuelve la etiqueta <img> del producto, o nada si no tiene imagen */
+function productImage(product, lazy) {
+  if (!product.image) return "";
+  const src = CONFIG.imagesFolder + encodeURIComponent(product.image);
+  return `<img src="${src}" alt="${escapeHtml(product.name)}"${lazy ? ' loading="lazy"' : ""}>`;
 }
 
 /* ===== Tarjetas ===== */
@@ -125,6 +136,7 @@ function renderProducts() {
 
   grid.innerHTML = list.map(p => `
     <article class="product-card">
+      ${productImage(p, true)}
       <div class="card-body">
         <span class="tag">${escapeHtml(stockText(p.quantity))}</span>
         <h3>${escapeHtml(p.name)}</h3>
@@ -151,6 +163,7 @@ function openDetails(id) {
   if (!product) return;
 
   dialogBody.innerHTML = `
+    ${productImage(product, false)}
     <span class="tag">${escapeHtml(stockText(product.quantity))}</span>
     <h2>${escapeHtml(product.name)}</h2>
     <p class="price">${money.format(product.price)}</p>

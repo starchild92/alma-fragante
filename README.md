@@ -7,7 +7,8 @@ Sitio estático (HTML, CSS y JavaScript). Es gratis y no necesita servidor.
 ```
 mi-web/
 ├── index.html          → La página (estructura)
-├── inventario.csv      → TU inventario (nombre, precio, cantidad)
+├── inventario.csv      → TU inventario (nombre, precio, cantidad, imagen)
+├── imgs/               → Fotos de los productos
 ├── css/styles.css      → Los colores y tamaños propios
 ├── js/app.js           → La lógica (lee el CSV, buscador, formulario)
 └── README.md           → Este archivo
@@ -16,11 +17,12 @@ mi-web/
 ## Paso 1: Edita tu inventario
 
 1. Abre `inventario.csv` con Excel, Google Sheets, Numbers o cualquier editor de texto.
-2. La fila 1 son los títulos y no se cambian: `nombre`, `precio`, `cantidad`.
+2. La fila 1 son los títulos y no se cambian: `nombre`, `precio`, `cantidad`, `imagen`.
 3. Cada fila siguiente es un producto:
    - **nombre**: el nombre del producto.
    - **precio**: solo números, en pesos, sin puntos ni comas (ejemplo: `185000`).
    - **cantidad**: unidades disponibles. Si es `0`, la página muestra "Agotado".
+   - **imagen**: nombre del archivo de la foto dentro de la carpeta `imgs/` (ejemplo: `oud-royal.jpg`). Debe escribirse igual, con mayúsculas y extensión. Si la dejas vacía, el producto se muestra sin foto.
 4. Guarda el archivo en formato **CSV** (en Excel: "CSV UTF-8"). Sirven coma o punto y coma como separador.
 
 Para agregar un producto, escribe en la fila siguiente. Para quitar uno, borra la fila completa.

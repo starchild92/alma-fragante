@@ -2,8 +2,8 @@
 const CONFIG = {
   currency: "COP",
   locale: "es-CO",
-  // Archivo de inventario Excel (debe estar en la misma carpeta que index.html)
-  inventoryFile: "inventario.xlsx",
+  // Archivo de inventario CSV (debe estar en la misma carpeta que index.html)
+  inventoryFile: "inventario.csv",
   // Dirección del formulario en Formspree (ver README). Ejemplo: "https://formspree.io/f/abcd1234"
   formEndpoint: "https://formspree.io/f/TU_ID_AQUI",
   // Opcional: número de WhatsApp con código de país, sin + ni espacios. Ejemplo: "573001234567"
@@ -25,7 +25,7 @@ const money = new Intl.NumberFormat(CONFIG.locale, {
   maximumFractionDigits: 0
 });
 
-/* Lista de productos cargada desde el Excel */
+/* Lista de productos cargada desde el CSV */
 let products = [];
 
 /* Evita que texto escrito por alguien se interprete como código */
@@ -35,25 +35,63 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-/* ===== Lectura del inventario Excel ===== */
+/* ===== Lectura del inventario CSV ===== */
 /*
-  La primera hoja debe tener en la fila 1 los títulos: nombre, precio, cantidad.
-  Las filas sin nombre o con precio/cantidad no válidos se ignoran.
+  La fila 1 debe tener los títulos: nombre, precio, cantidad.
+  Acepta coma (,) o punto y coma (;) como separador, porque Excel en español
+  suele guardar con punto y coma.
 */
+function parseCsv(text) {
+  text = text.replace(/^\uFEFF/, "");
+  const firstLine = text.split(/\r?\n/, 1)[0];
+  const separator = firstLine.split(";").length > firstLine.split(",").length ? ";" : ",";
+
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (inQuotes) {
+      if (char === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (char === '"') inQuotes = false;
+      else field += char;
+    } else if (char === '"') {
+      inQuotes = true;
+    } else if (char === separator) {
+      row.push(field); field = "";
+    } else if (char === "\n" || char === "\r") {
+      if (char === "\r" && text[i + 1] === "\n") i++;
+      row.push(field); rows.push(row); row = []; field = "";
+    } else {
+      field += char;
+    }
+  }
+  if (field !== "" || row.length) { row.push(field); rows.push(row); }
+
+  const nonEmpty = rows.filter(r => r.some(cell => cell.trim() !== ""));
+  if (nonEmpty.length === 0) return [];
+
+  const headers = nonEmpty[0].map(h => h.trim().toLowerCase());
+  return nonEmpty.slice(1).map(cells => {
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = (cells[i] ?? "").trim(); });
+    return obj;
+  });
+}
+
 async function loadInventory() {
   const response = await fetch(CONFIG.inventoryFile, { cache: "no-store" });
   if (!response.ok) throw new Error("No se pudo leer el inventario");
 
-  const buffer = await response.arrayBuffer();
-  const workbook = XLSX.read(buffer, { type: "array" });
-  const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(sheet, { defval: "" });
+  const rows = parseCsv(await response.text());
 
   const items = [];
   rows.forEach((row, index) => {
     const name = String(row.nombre ?? "").trim();
-    const price = Number(row.precio);
-    const quantity = Number(row.cantidad);
+    const price = row.precio === "" ? NaN : Number(row.precio);
+    const quantity = row.cantidad === "" ? NaN : Number(row.cantidad);
 
     const validRow =
       name !== "" &&

@@ -137,9 +137,42 @@ section {
 }
 
 /* ===== Ventana de detalle ===== */
+/*
+  La ventana se ajusta a la altura de la pantalla: la foto se encoge
+  para que el texto y los botones siempre se vean sin desplazarse.
+  100dvh tiene en cuenta las barras del navegador en el celular.
+*/
+#product-dialog > article {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - var(--pico-spacing) * 2);
+  max-height: calc(100dvh - var(--pico-spacing) * 2);
+  overflow: hidden;
+}
+
+#dialog-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+#dialog-body > :not(img) {
+  flex-shrink: 0;
+}
+
 #product-dialog img {
+  flex: 1 1 auto;
+  min-height: 8rem;
   width: 100%;
+  object-fit: contain;
+  margin-bottom: var(--pico-spacing);
   border-radius: var(--pico-border-radius);
+}
+
+#product-dialog form {
+  flex-shrink: 0;
+  margin: 0;
 }
 
 /* ===== Campo anti-spam oculto ===== */

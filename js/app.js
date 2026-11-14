@@ -108,7 +108,8 @@ async function loadInventory() {
     }
 
     const image = String(row.imagen ?? "").trim();
-    items.push({ id: index + 1, name, price, quantity, image });
+    const description = String(row.descripcion ?? "").trim();
+    items.push({ id: index + 1, name, price, quantity, image, description });
   });
 
   return items;
@@ -117,7 +118,11 @@ async function loadInventory() {
 /* ===== Filtro por nombre ===== */
 function getFilteredProducts() {
   const term = searchInput.value.trim().toLowerCase();
-  return products.filter(p => !term || p.name.toLowerCase().includes(term));
+  return products.filter(p =>
+    !term ||
+    p.name.toLowerCase().includes(term) ||
+    p.description.toLowerCase().includes(term)
+  );
 }
 
 /* ===== Imágenes ===== */
@@ -186,6 +191,7 @@ function openDetails(id) {
     <span class="tag">${escapeHtml(stockText(product.quantity))}</span>
     <h2>${escapeHtml(product.name)}</h2>
     <p class="price">${money.format(product.price)}</p>
+    ${product.description ? `<p class="description">${escapeHtml(product.description)}</p>` : ""}
     <button type="button" id="ask-btn">Pedir información de este producto</button>
   `;
 

@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alma Fragante | Productos</title>
-  <meta name="description" content="Catálogo de productos y formulario de contacto.">
+  <title>Alma Fragante | Perfumes</title>
+  <meta name="description" content="Catálogo de perfumes y colonias de Alma Fragante.">
+  <!-- Tipografías: Cormorant Garamond (títulos) e Inter (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
   <!-- Librería de estilos gratuita (Pico.css) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <header class="site-header">
     <nav class="container">
-      <a href="#inicio" class="brand">Alma Fragante</a>
+      <a href="#inicio" class="brand">Alma <span>Fragante</span></a>
       <ul>
         <li><a href="#productos">Productos</a></li>
         <li><a href="#contacto" role="button" class="btn-small">Contacto</a></li>
@@ -21,16 +25,22 @@
     </nav>
   </header>
 
+  <section id="inicio" class="hero">
+    <div class="container">
+      <p class="eyebrow">Perfumería</p>
+      <h1>Fragancias que cuentan tu historia</h1>
+      <p class="hero-text">Descubre nuestra selección de perfumes y colonias. Escríbenos y te respondemos en menos de 24 horas.</p>
+      <a href="#productos" role="button">Ver catálogo</a>
+    </div>
+  </section>
+
   <main class="container">
 
-    <section id="inicio" class="hero">
-      <h1>Productos de calidad para tu negocio</h1>
-      <p>Revisa nuestro catálogo y escríbenos. Te respondemos en menos de 24 horas.</p>
-      <a href="#productos" role="button">Ver productos</a>
-    </section>
-
     <section id="productos">
-      <h2>Productos</h2>
+      <header class="section-head">
+        <p class="eyebrow">Colección</p>
+        <h2>Nuestros perfumes</h2>
+      </header>
       <div class="toolbar">
         <input type="search" id="search" placeholder="Buscar producto..." aria-label="Buscar producto">
       </div>
@@ -39,8 +49,11 @@
     </section>
 
     <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Cuéntanos qué necesitas y te responderemos pronto.</p>
+      <header class="section-head">
+        <p class="eyebrow">Hablemos</p>
+        <h2>Contacto</h2>
+        <p>Cuéntanos qué fragancia buscas y te responderemos pronto.</p>
+      </header>
 
       <form id="contact-form">
         <div class="grid">
@@ -75,6 +88,7 @@
   </main>
 
   <footer>
+    <p class="brand">Alma <span>Fragante</span></p>
     <p>© <span id="year"></span> Alma Fragante. Todos los derechos reservados.</p>
   </footer>
 

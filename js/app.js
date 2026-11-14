@@ -151,8 +151,11 @@ function renderProducts() {
   const list = getFilteredProducts();
 
   grid.innerHTML = list.map(p => `
-    <article class="product-card">
-      ${productImage(p, true)}
+    <article class="product-card${p.quantity > 0 ? "" : " sold-out"}">
+      <div class="card-media">
+        ${productImage(p, true)}
+        ${p.quantity > 0 ? "" : '<span class="badge">Agotado</span>'}
+      </div>
       <div class="card-body">
         <span class="tag">${escapeHtml(stockText(p.quantity))}</span>
         <h3>${escapeHtml(p.name)}</h3>

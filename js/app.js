@@ -9,9 +9,9 @@ const CONFIG = {
   // Carpeta de respaldo con las fotos originales: se usa si falta la versión liviana
   backupImagesFolder: "imgs/",
   // Dirección del formulario en Formspree (ver README). Ejemplo: "https://formspree.io/f/abcd1234"
-  formEndpoint: "https://formspree.io/f/TU_ID_AQUI",
+  formEndpoint: "https://formspree.io/f/xzerdlgz",
   // Opcional: número de WhatsApp con código de país, sin + ni espacios. Ejemplo: "573001234567"
-  whatsapp: ""
+  whatsapp: "573015964970"
 };
 
 /* ===== Elementos de la página ===== */

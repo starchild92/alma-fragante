@@ -7,7 +7,7 @@ Sitio estático (HTML, CSS y JavaScript). Es gratis y no necesita servidor.
 ```
 mi-web/
 ├── index.html          → La página (estructura)
-├── inventario.csv      → TU inventario (nombre, precio, cantidad, imagen)
+├── inventario.csv      → TU inventario (nombre, precio, cantidad, imagen, descripción)
 ├── imgs/               → Fotos originales (respaldo)
 │   └── low_res/        → Fotos livianas que usa la página
 ├── css/styles.css      → Los colores y tamaños propios
@@ -18,12 +18,13 @@ mi-web/
 ## Paso 1: Edita tu inventario
 
 1. Abre `inventario.csv` con Excel, Google Sheets, Numbers o cualquier editor de texto.
-2. La fila 1 son los títulos y no se cambian: `nombre`, `precio`, `cantidad`, `imagen`.
+2. La fila 1 son los títulos y no se cambian: `nombre`, `precio`, `cantidad`, `imagen`, `descripcion`.
 3. Cada fila siguiente es un producto:
    - **nombre**: el nombre del producto.
    - **precio**: solo números, en pesos, sin puntos ni comas (ejemplo: `185000`).
    - **cantidad**: unidades disponibles. Si es `0`, la página muestra "Agotado".
    - **imagen**: nombre del archivo de la foto. La página la busca primero en `imgs/low_res/` (versión liviana) y, si no la encuentra ahí, usa la original de `imgs/` (ejemplo: `oud-royal.jpg`). Debe escribirse igual, con mayúsculas y extensión. Si la dejas vacía, el producto se muestra sin foto.
+   - **descripcion**: texto que aparece en "Ver detalles". Es opcional. Si tiene comas, Excel y Google Sheets lo guardan bien solos; si editas el CSV a mano, pon el texto entre comillas (ejemplo: `"Floral, dulce y duradero"`).
 4. Guarda el archivo en formato **CSV** (en Excel: "CSV UTF-8"). Sirven coma o punto y coma como separador.
 
 Para agregar un producto, escribe en la fila siguiente. Para quitar uno, borra la fila completa.

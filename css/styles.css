@@ -437,7 +437,16 @@ h1, h2, h3, .brand {
 
 #dialog-body .price {
   font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* La descripción se desplaza si es muy larga, sin agrandar la ventana */
+#dialog-body .description {
+  max-height: 8rem;
+  overflow-y: auto;
   margin-bottom: 1rem;
+  color: var(--pico-muted-color);
+  line-height: 1.55;
 }
 
 #product-dialog img {

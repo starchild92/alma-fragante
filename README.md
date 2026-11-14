@@ -29,7 +29,7 @@ Las filas sin nombre, o con precio o cantidad que no sean números, no se muestr
 
 ## Paso 2: Personaliza tu información
 
-1. **Nombre de tu empresa**: en `index.html`, busca "Mi Empresa" y cámbialo (aparece 3 veces).
+1. **Nombre de tu empresa**: está como "Alma Fragante" en `index.html` (aparece 3 veces). Cámbialo ahí si lo necesitas.
 2. **Moneda y WhatsApp**: en `js/app.js`, revisa el bloque `CONFIG`.
 
 ## Paso 3: Activa el formulario de contacto (gratis)

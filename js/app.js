@@ -4,8 +4,10 @@ const CONFIG = {
   locale: "es-CO",
   // Archivo de inventario CSV (debe estar en la misma carpeta que index.html)
   inventoryFile: "inventario.csv",
-  // Carpeta donde están las fotos de los productos (columna "imagen" del CSV)
-  imagesFolder: "imgs/",
+  // Carpeta con las fotos livianas que usa la página (columna "imagen" del CSV)
+  imagesFolder: "imgs/low_res/",
+  // Carpeta de respaldo con las fotos originales: se usa si falta la versión liviana
+  backupImagesFolder: "imgs/",
   // Dirección del formulario en Formspree (ver README). Ejemplo: "https://formspree.io/f/abcd1234"
   formEndpoint: "https://formspree.io/f/TU_ID_AQUI",
   // Opcional: número de WhatsApp con código de país, sin + ni espacios. Ejemplo: "573001234567"
@@ -119,12 +121,26 @@ function getFilteredProducts() {
 }
 
 /* ===== Imágenes ===== */
-/* Devuelve la etiqueta <img> del producto, o nada si no tiene imagen */
+/*
+  Devuelve la etiqueta <img> del producto, o nada si no tiene imagen.
+  Primero usa la foto liviana; si no existe, carga la original de respaldo.
+*/
 function productImage(product, lazy) {
   if (!product.image) return "";
-  const src = CONFIG.imagesFolder + encodeURIComponent(product.image);
-  return `<img src="${src}" alt="${escapeHtml(product.name)}"${lazy ? ' loading="lazy"' : ""}>`;
+  const file = encodeURIComponent(product.image);
+  const src = CONFIG.imagesFolder + file;
+  const backup = CONFIG.backupImagesFolder + file;
+  return `<img src="${src}" data-backup="${backup}" alt="${escapeHtml(product.name)}"${lazy ? ' loading="lazy"' : ""}>`;
 }
+
+/* Si una foto liviana no carga, cambia a la original (solo una vez) */
+document.addEventListener("error", event => {
+  const img = event.target;
+  if (!(img instanceof HTMLImageElement) || !img.dataset.backup) return;
+  const backup = img.dataset.backup;
+  delete img.dataset.backup;
+  img.src = backup;
+}, true);
 
 /* ===== Tarjetas ===== */
 function stockText(quantity) {

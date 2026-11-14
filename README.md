@@ -8,7 +8,8 @@ Sitio estático (HTML, CSS y JavaScript). Es gratis y no necesita servidor.
 mi-web/
 ├── index.html          → La página (estructura)
 ├── inventario.csv      → TU inventario (nombre, precio, cantidad, imagen)
-├── imgs/               → Fotos de los productos
+├── imgs/               → Fotos originales (respaldo)
+│   └── low_res/        → Fotos livianas que usa la página
 ├── css/styles.css      → Los colores y tamaños propios
 ├── js/app.js           → La lógica (lee el CSV, buscador, formulario)
 └── README.md           → Este archivo
@@ -22,7 +23,7 @@ mi-web/
    - **nombre**: el nombre del producto.
    - **precio**: solo números, en pesos, sin puntos ni comas (ejemplo: `185000`).
    - **cantidad**: unidades disponibles. Si es `0`, la página muestra "Agotado".
-   - **imagen**: nombre del archivo de la foto dentro de la carpeta `imgs/` (ejemplo: `oud-royal.jpg`). Debe escribirse igual, con mayúsculas y extensión. Si la dejas vacía, el producto se muestra sin foto.
+   - **imagen**: nombre del archivo de la foto. La página la busca primero en `imgs/low_res/` (versión liviana) y, si no la encuentra ahí, usa la original de `imgs/` (ejemplo: `oud-royal.jpg`). Debe escribirse igual, con mayúsculas y extensión. Si la dejas vacía, el producto se muestra sin foto.
 4. Guarda el archivo en formato **CSV** (en Excel: "CSV UTF-8"). Sirven coma o punto y coma como separador.
 
 Para agregar un producto, escribe en la fila siguiente. Para quitar uno, borra la fila completa.

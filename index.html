@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Empresa | Productos</title>
+  <meta name="description" content="Catálogo de productos y formulario de contacto.">
+  <!-- Librería de estilos gratuita (Pico.css) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="container">
+      <a href="#inicio" class="brand">Mi Empresa</a>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#contacto" role="button" class="btn-small">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section id="inicio" class="hero">
+      <h1>Productos de calidad para tu negocio</h1>
+      <p>Revisa nuestro catálogo y escríbenos. Te respondemos en menos de 24 horas.</p>
+      <a href="#productos" role="button">Ver productos</a>
+    </section>
+
+    <section id="productos">
+      <h2>Productos</h2>
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Buscar producto..." aria-label="Buscar producto">
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+      <p id="empty-msg" hidden>No encontramos productos con ese filtro.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Cuéntanos qué necesitas y te responderemos pronto.</p>
+
+      <form id="contact-form">
+        <div class="grid">
+          <label>Nombre
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label>Correo
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+        </div>
+        <label>Teléfono
+          <input type="tel" name="phone" required autocomplete="tel" placeholder="Ej: 300 123 4567">
+        </label>
+        <label>Mensaje
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+
+        <!-- Campo trampa contra spam: los humanos no lo ven -->
+        <div class="hp" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit">Enviar mensaje</button>
+        <p id="form-status" role="status"></p>
+      </form>
+
+      <p id="whatsapp-wrap" hidden>
+        <a id="whatsapp-link" href="#" target="_blank" rel="noopener" role="button" class="outline">Escribir por WhatsApp</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Mi Empresa. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Ventana de detalle del producto -->
+  <dialog id="product-dialog">
+    <article>
+      <div id="dialog-body"></div>
+      <form method="dialog">
+        <button class="secondary">Cerrar</button>
+      </form>
+    </article>
+  </dialog>
+
+  <!-- Librería gratuita para leer archivos Excel (SheetJS) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

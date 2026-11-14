@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mi sitio web de productos y contacto
 
-## Getting Started
+Sitio estático (HTML, CSS y JavaScript). Es gratis y no necesita servidor.
 
-First, run the development server:
+## Estructura de archivos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+mi-web/
+├── index.html          → La página (estructura)
+├── inventario.xlsx     → TU inventario en Excel (nombre, precio, cantidad)
+├── css/styles.css      → Los colores y tamaños propios
+├── js/app.js           → La lógica (lee el Excel, buscador, formulario)
+└── README.md           → Este archivo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Paso 1: Edita tu inventario en Excel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Abre `inventario.xlsx` con Excel, Google Sheets o Numbers.
+2. La fila 1 son los títulos y no se cambian: `nombre`, `precio`, `cantidad`.
+3. Cada fila siguiente es un producto:
+   - **nombre**: el nombre del producto.
+   - **precio**: solo números, en pesos, sin puntos ni comas (ejemplo: `185000`).
+   - **cantidad**: unidades disponibles. Si es `0`, la página muestra "Agotado".
+4. Guarda el archivo en formato `.xlsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para agregar un producto, escribe en la fila siguiente. Para quitar uno, borra la fila completa.
 
-## Learn More
+Las filas sin nombre, o con precio o cantidad que no sean números, no se muestran.
 
-To learn more about Next.js, take a look at the following resources:
+Por ahora la página solo lee la primera hoja del Excel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Paso 2: Personaliza tu información
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Nombre de tu empresa**: en `index.html`, busca "Mi Empresa" y cámbialo (aparece 3 veces).
+2. **Moneda y WhatsApp**: en `js/app.js`, revisa el bloque `CONFIG`.
 
-## Deploy on Vercel
+## Paso 3: Activa el formulario de contacto (gratis)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El sitio no tiene servidor propio, así que usamos **Formspree**, un servicio gratuito que te envía los mensajes al correo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Crea una cuenta en formspree.io (plan gratuito).
+2. Crea un formulario nuevo y copia su dirección, que tiene esta forma: `https://formspree.io/f/abcd1234`.
+3. Pégala en `js/app.js`, reemplazando `https://formspree.io/f/TU_ID_AQUI`.
+
+## Paso 4: Publica gratis en GitHub Pages
+
+1. Crea una cuenta en github.com.
+2. Crea un repositorio nuevo (por ejemplo `mi-web`) y márcalo como **Public**.
+3. Sube todos los archivos de la carpeta `mi-web` (botón *Add file → Upload files*).
+4. Ve a **Settings → Pages**. En *Source* elige **Deploy from a branch**, rama **main**, carpeta **/ (root)** y guarda.
+5. En un par de minutos tu sitio estará en `https://TU-USUARIO.github.io/mi-web/`.
+
+Alternativa igual de gratis: arrastra la carpeta a **app.netlify.com/drop**.
+
+Para actualizar los productos, cambia el Excel y súbelo de nuevo, reemplazando el archivo anterior. Luego recarga la página.
+
+## Cómo probarlo en tu computador
+
+Con doble clic en `index.html` el navegador **no** deja leer el Excel, y la lista de productos aparecerá como "No pudimos cargar el inventario". Para probarlo en tu computador necesitas un servidor local. Si no sabes cómo, publícalo en GitHub Pages o Netlify y pruébalo ahí.
+
+## Qué sigue (opcional)
+
+- Dominio propio (por ejemplo `miempresa.com`), que cuesta dinero cada año.
+- Más páginas, como "Sobre nosotros".
+- Fotos de tus productos.

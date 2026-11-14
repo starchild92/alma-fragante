@@ -181,6 +181,20 @@ function showLoadError() {
     "publícala como indica el README: el navegador no deja leer el archivo así.";
 }
 
+/* ===== WhatsApp ===== */
+/* Enlace a un chat de WhatsApp con el mensaje ya escrito */
+function whatsappUrl(message) {
+  return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+
+/* Mensaje con la información del producto, según si hay unidades o no */
+function productWhatsappMessage(product) {
+  const price = money.format(product.price);
+  return product.quantity > 0
+    ? `Hola, me interesa el producto ${product.name} (${price}). ¿Me pueden dar más información?`
+    : `Hola, me interesa el producto ${product.name} (${price}), que aparece agotado. ¿Saben cuándo vuelve a estar disponible?`;
+}
+
 /* ===== Ventana de detalle ===== */
 function openDetails(id) {
   const product = products.find(p => p.id === id);
@@ -192,7 +206,14 @@ function openDetails(id) {
     <h2>${escapeHtml(product.name)}</h2>
     <p class="price">${money.format(product.price)}</p>
     ${product.description ? `<p class="description">${escapeHtml(product.description)}</p>` : ""}
-    <button type="button" id="ask-btn">Pedir información de este producto</button>
+    <div class="dialog-actions">
+      ${CONFIG.whatsapp ? `
+        <a href="${whatsappUrl(productWhatsappMessage(product))}" target="_blank" rel="noopener" role="button" class="btn-whatsapp">
+          ${document.getElementById("whatsapp-icon").innerHTML}
+          <span>Preguntar por WhatsApp</span>
+        </a>` : ""}
+      <button type="button" id="ask-btn" class="secondary">Pedir información por correo</button>
+    </div>
   `;
 
   document.getElementById("ask-btn").addEventListener("click", () => {
@@ -252,7 +273,7 @@ async function init() {
 
   if (CONFIG.whatsapp) {
     document.getElementById("whatsapp-link").href =
-      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola, quiero más información.")}`;
+      whatsappUrl("Hola, quiero más información sobre uno de los productos de alma Fragante.");
     document.getElementById("whatsapp-wrap").hidden = false;
   }
 

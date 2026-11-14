@@ -252,7 +252,7 @@ async function init() {
 
   if (CONFIG.whatsapp) {
     document.getElementById("whatsapp-link").href =
-      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola, quiero más información.")}`;
+      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola, quiero más información sobre uno de los productos de alma Fragante.")}`;
     document.getElementById("whatsapp-wrap").hidden = false;
   }
 

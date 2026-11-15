@@ -231,13 +231,26 @@ h1, h2, h3, .brand {
 }
 
 /* ===== Portada ===== */
+/*
+  Foto de fondo con una capa oscura encima para que el texto se lea bien.
+  Para cambiar la foto, reemplaza imgs/hero.jpg o cambia la ruta en --hero-image.
+*/
 .hero {
+  --hero-image: url("../imgs/hero.jpg");
+  position: relative;
+  isolation: isolate;
   text-align: center;
-  padding: clamp(4rem, 12vw, 7rem) 0 clamp(3.5rem, 10vw, 6rem);
+  padding: clamp(5rem, 14vw, 9rem) 0 clamp(4.5rem, 12vw, 8rem);
+  color: #f5efe6;
   background:
-    radial-gradient(ellipse at top, var(--af-gold-soft), transparent 60%),
-    linear-gradient(180deg, var(--af-hero-from), var(--af-hero-to));
+    linear-gradient(180deg, rgba(20, 17, 15, 0.66), rgba(20, 17, 15, 0.82)),
+    var(--hero-image) center / cover no-repeat,
+    #14110f;
   border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.hero .eyebrow {
+  color: #e4c67f;
 }
 
 .hero h1 {
@@ -245,18 +258,31 @@ h1, h2, h3, .brand {
   line-height: 1.05;
   max-width: 14ch;
   margin: 0 auto 1.25rem;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-text {
   max-width: 34rem;
   margin: 0 auto 2rem;
-  color: var(--pico-muted-color);
+  color: rgba(245, 239, 230, 0.88);
   font-size: 1.05rem;
 }
 
+/* Botón dorado sobre la foto, igual en modo claro y oscuro */
 .hero [role="button"] {
   padding: 0.8rem 2rem;
   letter-spacing: 0.05em;
+  color: #14110f;
+  background: #d4b062;
+  border-color: #d4b062;
+}
+
+.hero [role="button"]:hover,
+.hero [role="button"]:focus-visible {
+  color: #14110f;
+  background: #e4c67f;
+  border-color: #e4c67f;
 }
 
 /* ===== Buscador ===== */
